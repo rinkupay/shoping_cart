@@ -25,6 +25,7 @@ const ProductCard: React.FC<ProductProps> = ({ title,image,price,category, descr
       {/* Product Details */}
       <div className="mt-4">
         <h3 className="text-lg font-semibold">{title.slice(0,18)}</h3>
+        <p className=" font-medium">Category: <span className="font-light ">{category}</span></p>
         <p className="text-gray-600 text-sm">{description.slice(0,45)}</p>
 
         {/* Price & Color */}
