@@ -214,6 +214,12 @@ useEffect(() => {
   }
 },[cartItem]);
 
+useEffect(()=>{
+  if(error){
+    toast.error(error.message)
+  }
+},[error]);
+
 
 
 
