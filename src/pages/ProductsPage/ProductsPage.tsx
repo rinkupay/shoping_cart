@@ -143,8 +143,8 @@ function isCartItem(item: any): item is CartItem {
   };
 
   // Handle cart
-  const handleAddToCart = async(product: Product) => {
-   await setCartItem(prev => {
+  const handleAddToCart = (product: Product) => {
+   setCartItem(prev => {
       // Check if product already exists in cart
       const existingItem = prev.find(item => item.id === product.id);
       if (existingItem) {
