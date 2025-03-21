@@ -82,6 +82,7 @@ const ProductsPage: React.FC = () => {
   const allProducts: Product[] = data || [];
 
 
+
   // States
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedRatings, setSelectedRatings] = useState<number[]>([]);
@@ -123,7 +124,7 @@ function isCartItem(item: any): item is CartItem {
   );
 }
  
-
+console.log(selectedRatings)
 
   // Pagination settings
   const productsPerPage = 12;
@@ -175,8 +176,22 @@ function isCartItem(item: any): item is CartItem {
       product.price >= value[0] &&
       product.price <= value[1] &&
       (selectedRatings.length === 0 ||
-        selectedRatings.includes(product.rating.rate))
-    );
+        // selectedRatings.includes(product.rating.rate))
+        selectedRatings.some((rating) => {
+
+          if(rating === 3){
+            return product.rating.rate <= 3;
+          }
+          else if(rating === 4){
+            return product.rating.rate <= 4;
+          }
+          else if(rating === 5){
+            return product.rating.rate <= 5;
+          }
+          return product.rating.rate === rating;
+        })
+    )
+  )
   });
 
   if (sortOrder === "asc") {
@@ -222,7 +237,7 @@ useEffect(()=>{
 
 
 
-
+console.log(allProducts)
 
   return (
     <div className="container p-1 flex">
